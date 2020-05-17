@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "563756115712",
+    "firebase_url": "https://reactnativepojects.firebaseio.com",
+    "project_id": "reactnativepojects",
+    "storage_bucket": "reactnativepojects.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:563756115712:android:0b6d6894ac12ae119ef5e5",
+        "android_client_info": {
+          "package_name": "com.farisfood"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "563756115712-bsc1db0upk5hqa50unssu1g4vcl9qtq8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD4Ee7ZAwrEZPrEmcVVDhEVHcFj_xBeFCo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "563756115712-bsc1db0upk5hqa50unssu1g4vcl9qtq8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
