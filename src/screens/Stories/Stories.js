@@ -11,7 +11,7 @@ const Stories = (props) => {
   const [currentUserIndex, setCurrentUserIndex] = useState(0);
   const [currentScrollValue, setCurrentScrollValue] = useState(0);
   const modalScroll = useRef(null);
-
+  const { colors } = props.theme;
   const onStorySelect = (index) => {
     setCurrentUserIndex(index);
     setModel(true);
@@ -72,7 +72,7 @@ const Stories = (props) => {
               source={{ uri: item.profile }}
               isHorizontal
             />
-            <Text style={styles.title}>{item.title}</Text>
+            <Text style={{fontSize: 9, textAlign: 'center',color:colors.text}}>{item.title}</Text>
           </TouchableOpacity>
         )}
       />
@@ -116,7 +116,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'flex-start',
     paddingVertical: '5%',
-    backgroundColor: 'rgba(255,255,255,255)',
   },
   circle: {
     width: 66,
@@ -129,9 +128,7 @@ const styles = StyleSheet.create({
   modal: {
     flex: 1,
   },
-  title: {
-    fontSize: 9, textAlign: 'center',
-  },
+
 });
 
 

@@ -10,7 +10,8 @@ import {
     Text, 
     AsyncStorage, 
     ScrollView ,
-    TextInput } from 'react-native';
+    TextInput,
+    StatusBar } from 'react-native';
     
     const react_native = {
         View , 
@@ -23,7 +24,8 @@ import {
         Text, 
         AsyncStorage, 
         ScrollView ,
-        TextInput 
+        TextInput ,
+        StatusBar
     }
 
     export default react_native;

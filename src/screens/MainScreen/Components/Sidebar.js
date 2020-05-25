@@ -12,9 +12,14 @@ import {
 } from 'react-native';
 import {  Button , Thumbnail, Content ,ListItem ,Separator ,List ,Left,Right,Icon,Body, Accordion} from 'native-base';
 import ConstantData from '../../../utilities/ConstantData';
-import FontAwesome from '../../../utilities/AllImports/FontAwesom'
+import FontAwesome from '../../../utilities/AllImports/FontAwesom';
+import MainScreen from '../MainScreen';
+import Second from '../../SecondScreen/SecondScreen'
+
 export default class Sidebar extends Component {
+ 
   render() {
+    //const { Drawer } = this.props.Drawer;
     return (
       <ScrollView style={styles.container}>
           <View style={styles.topImage}>
@@ -29,32 +34,10 @@ export default class Sidebar extends Component {
           <List>
           <ListItem itemDivider>
               <Text>A</Text>
-            </ListItem> 
+            </ListItem>             
 
-            
-            <ListItem selected >
-              <View style={{justifyContent:'space-between' , flexDirection:'row'}}>
-              <Left>
-                <FontAwesome.FontAwesomeIcon icon={ FontAwesome.faListAlt } color="black"/>
-              </Left>
-              <Body>
-                <Text>123</Text>
-              </Body>
-              <Right>
-              <TouchableOpacity>
-                <FontAwesome.FontAwesomeIcon icon={ FontAwesome.faChevronRight } color="black" />
-                </TouchableOpacity>
-              </Right>
-              </View>
-            </ListItem>
-           
-            
-            
           </List>
         </Content>
-          
-          
-          
       </ScrollView>
     );
   }
