@@ -1,17 +1,13 @@
 import React, { Component } from "react";
 import react_native from '../../utilities/AllImports/react_native'
-import native_base from '../../utilities/AllImports/native_base'
-import FontAwesom from '../../utilities/AllImports/FontAwesom'
 import Loader from "../../utilities/Loader";
 import { callRemoteMethod } from "../../utilities/WebServiceHandler";
 import Constants from "../../utilities/Constants";
 import { renderIf } from "../../utilities/CommonMethods";
 import Stories from "../Stories/Stories"
-//import mNotification from "../../services/notificationService"
-import MainCard from './Components/MainCard'
-import FooterBadge from './Components/FooterBadge';
-import Sidebar from './Components/Sidebar';
-import ConstantData from '../../utilities/ConstantData'
+//import mNotification from "../../services/notificationService";
+import MainCard from './Components/MainCard';
+import ConstantData from '../../utilities/ConstantData';
 
 /**
  * @author Vaibhav Padalia
@@ -84,7 +80,7 @@ export default class MainScreen extends Component {
                 <react_native.ScrollView showsVerticalScrollIndicator={false}>
                   {this.state.isLoading ? <Loader show={true} loading={this.state.isLoading} /> : null}
                 <Stories theme={this.props.theme}/>
-                <react_native.View style={{backgroundColor:colors.text,width:'100%',height:0.1,marginLeft:'3%',marginRight:'3%'}}/>
+                <react_native.View style={{backgroundColor:colors.text,width:'100%',height:0.5,marginLeft:'3%',marginRight:'3%'}}/>
                 {renderIf(this.state.noData, <react_native.Text style={{ textAlign: "center" }}>No data found.</react_native.Text>)}
                 {renderIf(ConstantData.MainListData.length,
                   <react_native.FlatList

@@ -56,18 +56,17 @@ export default class MainCard extends Component{
                                     </react_native.Animated.View>
                                 </react_native.TouchableWithoutFeedback>
 
-                            <react_native.View style={{flexDirection:'column',justifyContent:'space-around',marginLeft:'5%'}}>
+                            <react_native.TouchableOpacity style={{flexDirection:'column',justifyContent:'space-around',marginLeft:'5%'}}>
                                 <native_base.Text style={{color:colors.text,fontSize: 20,textAlign: 'left',}}>{ itemData.item.Name }</native_base.Text>
                                 <react_native.View style={{flexDirection:'row'}}>
                                     <FontAwesom.FontAwesomeIcon icon={FontAwesom.faStarHalfAlt} color={colors.text}/>    
                                     <native_base.Text note style={{color:colors.text,fontSize:10,width:'30%',textAlign: 'left',paddingLeft:'2%',paddingTop:1}}>3.5</native_base.Text>
                                 </react_native.View>
                                 
-                            </react_native.View>
+                            </react_native.TouchableOpacity>
                             </react_native.View>
                            }/>
-                           <react_native.View style={{backgroundColor:'gray',width:'100%',height:5, marginTop:10}}></react_native.View>
-                        
+                           <react_native.View style={{backgroundColor:'gray',width:'100%',height:10, marginTop:10}}></react_native.View>
                 </react_native.View>
             );
         }
