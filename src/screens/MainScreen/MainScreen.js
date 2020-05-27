@@ -5,7 +5,7 @@ import { callRemoteMethod } from "../../utilities/WebServiceHandler";
 import Constants from "../../utilities/Constants";
 import { renderIf } from "../../utilities/CommonMethods";
 import Stories from "../Stories/Stories"
-//import mNotification from "../../services/notificationService";
+import mNotification from "../../services/notificationService";
 import MainCard from './Components/MainCard';
 import ConstantData from '../../utilities/ConstantData';
 
@@ -71,7 +71,7 @@ export default class MainScreen extends Component {
   }
   async componentDidMount() {
     //this.GetMainData(); 
-    //mNotification.requestUserPermission();
+    mNotification.requestUserPermission();
     this.setState({fcmToken : await react_native.AsyncStorage.getItem('fcmToken')});
   }
   render() {
