@@ -8,7 +8,7 @@ export default  {
     {
     ID: 1,
     ImageURL:'https://i0.wp.com/cdn-prod.medicalnewstoday.com/content/images/articles/325/325466/man-walking-dog.jpg?w=1155&h=1541',
-    ListName: 'Restorant',
+    ListName: 'Restaurants',
     stories: [
       {
         ID :1 ,
@@ -30,44 +30,44 @@ export default  {
   {
     ID: 2,
     ImageURL:'https://scx2.b-cdn.net/gfx/news/hires/2019/2-nature.jpg',
-    ListName: 'Shifs',
+    ListName: 'Chef',
     stories: [
       {
         ID :1,
         ImageURL:'https://scx2.b-cdn.net/gfx/news/hires/2019/2-nature.jpg',
-        Name:'alia'
+        Name:'Gordon Ramsay'
       },
       {
         ID :2,
         ImageURL:'https://scx2.b-cdn.net/gfx/news/hires/2019/2-nature.jpg',
-        Name:'alia'
+        Name:'Rachael Ray'
       },
       {
         ID :3,
         ImageURL:'https://scx2.b-cdn.net/gfx/news/hires/2019/2-nature.jpg',
-        Name:'alia'
+        Name:'Thomas Keller'
       },
     ],
   },
   {
     ID: 3,
     ImageURL:'https://i0.wp.com/cdn-prod.medicalnewstoday.com/content/images/articles/325/325466/man-walking-dog.jpg?w=1155&h=1541',
-    ListName: 'Blogers',
+    ListName: 'Blogger',
     stories: [
       {
         ID :1,
         ImageURL:'https://i0.wp.com/cdn-prod.medicalnewstoday.com/content/images/articles/325/325466/man-walking-dog.jpg?w=1155&h=1541',
-        Name:'tabooleh'
+        Name:'Dish a Day'
       },
       {
         ID :2,
         ImageURL:'https://i0.wp.com/cdn-prod.medicalnewstoday.com/content/images/articles/325/325466/man-walking-dog.jpg?w=1155&h=1541',
-        Name:'tabooleh'
+        Name:'Changing Habits'
       },
       {
         ID :3,
         ImageURL:'https://i0.wp.com/cdn-prod.medicalnewstoday.com/content/images/articles/325/325466/man-walking-dog.jpg?w=1155&h=1541',
-        Name:'tabooleh'
+        Name:'Raw Lemon'
       },
     ],
   },

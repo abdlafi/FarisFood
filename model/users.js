@@ -2,8 +2,8 @@ export default Users = [
     {
         id: 1, 
         email: 'user1@email.com',
-        username: 'user1', 
-        password: 'password', 
+        username: 'admin', 
+        password: '12345678', 
         userToken: 'token123'
     },
     {
