@@ -159,7 +159,7 @@ const StoryContainer = (props) => {
 
         <Modal style={styles.modal} AnimationConfig={{useNativeDriver: true,isInteraction: true}} position="bottom" isOpen={isModelOpen} onClosed={onReadMoreClose}>
           <View style={styles.bar} />
-          <WebView source={{ uri: 'https://www.google.com' }} />
+          <WebView source={{ uri: 'https://www.instagram.com/faris_stop_eating/' }} />
         </Modal>
 
       </TouchableOpacity>
