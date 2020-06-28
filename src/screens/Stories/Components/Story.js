@@ -9,7 +9,7 @@ const ScreenWidth = Dimensions.get('window').width;
 
 const Story = (props) => {
   const { story } = props;
-  const { url, type } = story || {};
+  const { mediaURL, isVideo } = story || {};
 
   return (
     <View style={styles.container}>
@@ -18,9 +18,9 @@ const Story = (props) => {
         <ActivityIndicator color="white" />
       </View>
       )} */}
-      {type === 'image' ? (
+      {isVideo ? (
         <Image
-          source={{ uri: url }}
+          source={{ uri: mediaURL }}
           onLoadEnd={props.onImageLoaded}
           style={styles.content}
           resizeMode="stretch"
@@ -29,7 +29,7 @@ const Story = (props) => {
       )
         : (
           /*<Video
-            source={{ uri: url }}
+            source={{ uri: mediaURL }}
             paused={props.pause || props.isNewStory}
             onLoad={item => props.onVideoLoaded(item)}
             style={styles.content}

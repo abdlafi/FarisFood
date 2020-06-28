@@ -27,36 +27,33 @@ export default class MainScreen extends Component {
     searchText: "",     // Text that is to be searched.
     noData: false,      // If there are no results to be displayed.
     fcmToken: "",
-    MainXMLData : [],
+    StoriesData : [],
     ListCount : 0,
   }
-  GetMainData = () => {    
-      var endpoint = Constants.URL.BASE_URL;
-      callRemoteMethod(this, endpoint, {}, "MainSearchCallback", "GET", true,Constants.Enums.API.Main_XML,true);
+  GetChannelsData = () => {    
+      var endpoint = Constants.URL.BASE_URL + Constants.API_Compleater.Profile;
+      callRemoteMethod(this, endpoint, {IsActive: 1}, "ChannelsCallback", "GET", true,Constants.Enums.API.Main_XML,true);
   };
-  MainSearchCallback = (response) => {
-    if (response.length) { 
+
+  GetMainProfilsData = () => {    
+    var endpoint = Constants.URL.BASE_URL + Constants.API_Compleater.Profile_Type;
+    callRemoteMethod(this, endpoint, {IsActive: 1}, "MainProilesCallback", "GET", true,Constants.Enums.API.Main_XML,true);
+};
+
+
+  ChannelsCallback = (response) => {
+    if (response.information.length) { 
       this.setState({ noData: false }); 
-      this.setState({ MainXMLData: response });
-      this.GetSecondaryData();
+      this.setState({ StoriesData: response.information });
     } else { 
-      this.setState({ MainXMLData: [] });
-      this.setState({ DataList: [] });
+      this.setState({ StoriesData: [] });
       this.setState({ noData: true });
     }
   };
-  GetSecondaryData = () => {    
-    for(let i = 0 ; i< this.state.MainXMLData.length-1;i++){
-      var endpoint = this.state.MainXMLData[i].link[0]
-      this.setState({ ListCount: this.state.MainXMLData[i].Count[0] });
-      callRemoteMethod(this,endpoint , {}, "secondarySearchCallback", "GET", true,Constants.Enums.API.Secodary_XML,true);
-    }
-  };
-  secondarySearchCallback = (response) => {
-    if (response.length) { 
-      for(let i =0;i<this.state.ListCount;i++){
-        this.setState({ DataList: this.state.DataList.concat(response[i])});
-      }
+
+  MainProilesCallback = (response) => {
+    if (response.information.length) { 
+      this.setState({ DataList: response.information});
       this.setState({ noData: false }); 
     } else { 
       this.setState({ DataList: [] });
@@ -70,7 +67,8 @@ export default class MainScreen extends Component {
     });
   }
   async componentDidMount() {
-    //this.GetMainData(); 
+    this.GetChannelsData(); 
+    this.GetMainProfilsData();
     mNotification.requestUserPermission();
     this.setState({fcmToken : await react_native.AsyncStorage.getItem('fcmToken')});
   }
@@ -79,14 +77,14 @@ export default class MainScreen extends Component {
     return ( 
                 <react_native.ScrollView showsVerticalScrollIndicator={false}>
                   {this.state.isLoading ? <Loader show={true} loading={this.state.isLoading} /> : null}
-                <Stories theme={this.props.theme}/>
+                <Stories theme={this.props.theme} StoriesData={this.state.StoriesData}/>
                 <react_native.View style={{backgroundColor:colors.text,width:'100%',height:0.5,marginLeft:'3%',marginRight:'3%'}}/>
                 {renderIf(this.state.noData, <react_native.Text style={{ textAlign: "center" }}>No data found.</react_native.Text>)}
-                {renderIf(ConstantData.MainListData.length,
+                {renderIf(this.state.DataList.length,
                   <react_native.FlatList
                         style={styles.fileList}
                         keyExtractor={(item, index) => item.ID}
-                        data={ConstantData.MainListData}
+                        data={this.state.DataList}
                         showsVerticalScrollIndicator={false}
                         renderItem={itemData =>
                           <MainCard theme={this.props.theme} mData={itemData.item}/>                          

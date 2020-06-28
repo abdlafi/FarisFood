@@ -1,6 +1,6 @@
 import { customAlert } from "./CommonMethods";
-import  Constants  from './Constants'
 /**
+ *
  * @param {*} obj scope of the class from where it is called.
  * @param {*} endpoint API endpoint.
  * @param {*} data Body if data is to be sent.
@@ -9,7 +9,7 @@ import  Constants  from './Constants'
  * @param {*} loader Whether loader is to be shown or not (boolean).
  */
 
-export async function callRemoteMethod(obj, endpoint, data, returnMethod, type = "GET", loader, APIType , IsXMLResponse) {
+export async function callRemoteMethod(obj, endpoint, data, returnMethod, type = "GET", loader) {
   if (loader == true) {
     obj.setState({ isLoading: true });
   }
@@ -22,35 +22,22 @@ export async function callRemoteMethod(obj, endpoint, data, returnMethod, type =
   };
 
   if (type != "GET") {
-    request.body = JSON.stringify(data);
+     request.body = JSON.stringify(data);
   }
-  
-const parseString = require('react-native-xml2js').parseString;
-if (IsXMLResponse){
-    await fetch(endpoint)
-    .then(response => response.text())
-       .then((response) => { 
-           parseString(response, function (err, result) {
+ 
+
+  await fetch(endpoint, request)
+    .then(response => response.json())
+    .then(responseJson => {
       if (loader == true) {
         obj.setState({ isLoading: false });
       }
-      var TempList ;
-      if (APIType === Constants.Enums.API.Main_XML){
-        TempList = result.rss.channel;
-        eval("obj." + returnMethod + "(TempList)");
-      }else if (APIType === Constants.Enums.API.Secodary_XML){
-        TempList = result.rss.channel[0].item;
-        eval("obj." + returnMethod + "(TempList)");
-      }
-      
-    });   
-    })   
+      eval("obj." + returnMethod + "(responseJson)");
+    })
     .catch(error => {
       obj.setState({ isLoading: false });
       setTimeout(() => {
         customAlert(error.message);
       }, 500);
     });
-}
-  
 }

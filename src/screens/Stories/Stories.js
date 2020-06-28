@@ -2,11 +2,12 @@ import React, { useRef, useState } from 'react';
 import { FlatList, Image, Modal, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 // import Modal from 'react-native-modalbox';
 import { CubeNavigationHorizontal } from 'react-native-3dcube-navigation';
-import AllStories from '../Stories/constants/AllStories';
 import StoryContainer from '../Stories/Components/StoryContainer';
+import {renderif} from '../../utilities/CommonMethods'
 
 
 const Stories = (props) => {
+  const { StoriesData } = props;
   const [isModelOpen, setModel] = useState(false);
   const [currentUserIndex, setCurrentUserIndex] = useState(0);
   const [currentScrollValue, setCurrentScrollValue] = useState(0);
@@ -23,7 +24,7 @@ const Stories = (props) => {
 
   const onStoryNext = (isScroll) => {
     const newIndex = currentUserIndex + 1;
-    if (AllStories.length - 1 > currentUserIndex) {
+    if (StoriesData.length - 1 > currentUserIndex) {
       setCurrentUserIndex(newIndex);
       if (!isScroll) {
         modalScroll.current.scrollTo(newIndex, true);
@@ -63,17 +64,22 @@ const Stories = (props) => {
   return (
     <View style={styles.container}>
       <FlatList
-        data={AllStories}
+        data={StoriesData}
         horizontal
         renderItem={({ item, index }) => (
-          <TouchableOpacity onPress={() => onStorySelect(index)}>
+          <View>
+          {renderIf(item.channels.length,
+            <TouchableOpacity onPress={() => onStorySelect(index)}>
             <Image
               style={styles.circle}
-              source={{ uri: item.profile }}
+              source={{ uri: item.imageURL }}
               isHorizontal
             />
-            <Text style={{fontSize: 9, textAlign: 'center',color:colors.text}}>{item.title}</Text>
-          </TouchableOpacity>
+            <Text style={{fontSize: 9, textAlign: 'center',color:colors.text}}>{item.nameAR}</Text>
+          </TouchableOpacity>                
+          )}
+          </View>
+          
         )}
       />
 
@@ -96,7 +102,7 @@ const Stories = (props) => {
         {/* eslint-disable-next-line max-len */}
         <CubeNavigationHorizontal  callBackAfterSwipe={g => onScrollChange(g)} 
         ref={modalScroll} style={styles.container} responderCaptureDx={80}>
-          {AllStories.map((item, index) => (
+          {StoriesData.map((item, index) => (
             <StoryContainer
               onClose={onStoryClose}
               onStoryNext={onStoryNext}

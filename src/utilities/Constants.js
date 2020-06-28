@@ -1,8 +1,12 @@
 const BASE_URL = "http://192.168.0.99:1980/AssabeelRSS/AlDstor/AlDustorReact.xml";
 export default  {
   URL: {
-    BASE_URL: "http://192.168.0.99:1980/AssabeelRSS/AlDstor/AlDustorReact.xml",
+    BASE_URL: "http://apps.prosysjo.com:11190/FarisFoodAPI/api/",
     PLACEHOLDER_IMAGE: "https://s3-ap-southeast-1.amazonaws.com/popcornsg/placeholder-movieimage.png",
+  },
+  API_Compleater:{
+    Profile: "Profile/1/1",
+    Profile_Type: "ProfileType/1/1",
   },
   Enums: {
     API:{

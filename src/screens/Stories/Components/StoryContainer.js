@@ -18,13 +18,13 @@ const SCREEN_WIDTH = Dimensions.get('window').width;
 
 const StoryContainer = (props) => {
   const { user } = props;
-  const { stories = [] } = user || {};
+  const { channels = [] } = user || {};
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isModelOpen, setModel] = useState(false);
   const [isPause, setIsPause] = useState(false);
   const [isLoaded, setLoaded] = useState(false);
   const [duration, setDuration] = useState(3);
-  const story = stories.length ? stories[currentIndex] : {};
+  const story = channels.length ? channels[currentIndex] : {};
   const { isReadMore, url } = story || {};
 
   // const onVideoLoaded = (length) => {
@@ -40,7 +40,7 @@ const StoryContainer = (props) => {
   };
 
   const nextStory = () => {
-    if (stories.length - 1 > currentIndex) {
+    if (channels.length - 1 > currentIndex) {
       setCurrentIndex(currentIndex + 1);
       setLoaded(false);
       setDuration(3);
@@ -51,7 +51,7 @@ const StoryContainer = (props) => {
   };
 
   const prevStory = () => {
-    if (currentIndex > 0 && stories.length) {
+    if (currentIndex > 0 && channels.length) {
       setCurrentIndex(currentIndex - 1);
       setLoaded(false);
       setDuration(3);
@@ -137,7 +137,7 @@ const StoryContainer = (props) => {
 
           {loading()}
 
-          <UserView name={user.username} profile={user.profile} onClosePress={props.onClose} />
+          <UserView name={user.nameAR} profile={user.imageURL} onClosePress={props.onClose} />
 
           {isReadMore && <Readmore onReadMore={onReadMoreOpen} />}
 
@@ -147,11 +147,11 @@ const StoryContainer = (props) => {
             duration={duration}
             pause={isPause}
             isNewStory={props.isNewStory}
-            stories={stories}
+            stories={channels}
             currentIndex={currentIndex}
             useNativeDriver= {false}
-            currentStory={stories[currentIndex]}
-            length={stories.map((_, i) => i)}
+            currentStory={channels[currentIndex]}
+            length={channels.map((_, i) => i)}
             progress={{ id: currentIndex }}
           />
 
