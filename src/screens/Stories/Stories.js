@@ -3,7 +3,7 @@ import { FlatList, Image, Modal, StyleSheet, Text, TouchableOpacity, View } from
 // import Modal from 'react-native-modalbox';
 import { CubeNavigationHorizontal } from 'react-native-3dcube-navigation';
 import StoryContainer from '../Stories/Components/StoryContainer';
-import {renderif} from '../../utilities/CommonMethods'
+import {renderIf} from '../../utilities/CommonMethods'
 
 
 const Stories = (props) => {
