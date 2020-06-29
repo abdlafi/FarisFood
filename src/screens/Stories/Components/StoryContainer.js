@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import WebView from 'react-native-webview'
+//import WebView from 'react-native-webview'
 import Modal from 'react-native-modalbox';
 import GestureRecognizer from 'react-native-swipe-gestures';
 import Story from './Story';
@@ -159,7 +159,9 @@ const StoryContainer = (props) => {
 
         <Modal style={styles.modal} AnimationConfig={{useNativeDriver: true,isInteraction: true}} position="bottom" isOpen={isModelOpen} onClosed={onReadMoreClose}>
           <View style={styles.bar} />
-          <WebView source={{ uri: 'https://www.instagram.com/faris_stop_eating/' }} />
+          {
+          //<WebView source={{ uri: 'https://www.instagram.com/faris_stop_eating/' }} />
+          }
         </Modal>
 
       </TouchableOpacity>
