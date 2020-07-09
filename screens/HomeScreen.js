@@ -9,7 +9,7 @@ const HomeScreen = ({navigation}) => {
     return (
       <View style={styles.container}>
         <StatusBar barStyle= { theme.dark ? "light-content" : "dark-content" }/>
-        <MainScreen theme={theme}/>
+        <MainScreen theme={theme} navigation={navigation}/>
       </View>
     );
 };

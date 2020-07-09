@@ -25,7 +25,7 @@ const StoryContainer = (props) => {
   const [isLoaded, setLoaded] = useState(false);
   const [duration, setDuration] = useState(3);
   const story = channels.length ? channels[currentIndex] : {};
-  const { isReadMore, url } = story || {};
+  const { isReadMore, webURL } = story || {};
 
   // const onVideoLoaded = (length) => {
   //   props.onVideoLoaded(length.duration);
@@ -159,7 +159,7 @@ const StoryContainer = (props) => {
 
         <Modal style={styles.modal} AnimationConfig={{useNativeDriver: true,isInteraction: true}} position="bottom" isOpen={isModelOpen} onClosed={onReadMoreClose}>
           <View style={styles.bar} />
-          <WebView source={{ uri: 'https://www.instagram.com/faris_stop_eating/' }} />
+          <WebView source={{ uri: story.webURL }} />
         </Modal>
 
       </TouchableOpacity>

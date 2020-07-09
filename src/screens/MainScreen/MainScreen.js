@@ -8,6 +8,7 @@ import Stories from "../Stories/Stories"
 import mNotification from "../../services/notificationService";
 import MainCard from './Components/MainCard';
 import ConstantData from '../../utilities/ConstantData';
+import MenueScreen from '../MenueScreen/MenueScreen'
 
 /**
  * @author Vaibhav Padalia
@@ -37,7 +38,7 @@ export default class MainScreen extends Component {
 
   GetMainProfilsData = () => {    
     var endpoint = Constants.URL.BASE_URL + Constants.API_Compleater.Profile_Type;
-    callRemoteMethod(this, endpoint, {IsActive: 1}, "MainProilesCallback", "GET", true,Constants.Enums.API.Main_XML,true);
+    callRemoteMethod(this, endpoint, {IsActive: 1}, "MainProfilesCallback", "GET", true,Constants.Enums.API.Main_XML,true);
 };
 
 
@@ -51,7 +52,7 @@ export default class MainScreen extends Component {
     }
   };
 
-  MainProilesCallback = (response) => {
+  MainProfilesCallback = (response) => {
     if (response.information.length) { 
       this.setState({ DataList: response.information});
       this.setState({ noData: false }); 
@@ -72,6 +73,11 @@ export default class MainScreen extends Component {
     mNotification.requestUserPermission();
     this.setState({fcmToken : await react_native.AsyncStorage.getItem('fcmToken')});
   }
+/*
+  MoveToMenue(ProfileID) {
+    //this.props.navigation()
+  }
+*/
   render() {
     const { colors } = this.props.theme;
     return ( 
@@ -87,7 +93,7 @@ export default class MainScreen extends Component {
                         data={this.state.DataList}
                         showsVerticalScrollIndicator={false}
                         renderItem={itemData =>
-                          <MainCard theme={this.props.theme} mData={itemData.item}/>                          
+                          <MainCard theme={this.props.theme} mData={itemData.item} /*MoveScreen={}*/ />                          
                         }/>                  
                 )}
                 </react_native.ScrollView>                    
