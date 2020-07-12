@@ -19,22 +19,23 @@ const Story = (props) => {
       </View>
       )} */}
       {isVideo ? (
-        <Image
-          source={{ uri: mediaURL }}
-          onLoadEnd={props.onImageLoaded}
-          style={styles.content}
-          resizeMode="stretch"
-          // width={ScreenWidth}
-        />
-      )
-        : (
-          /*<Video
+        /*<Video
             source={{ uri: mediaURL }}
             paused={props.pause || props.isNewStory}
             onLoad={item => props.onVideoLoaded(item)}
             style={styles.content}
           />*/
           null
+        
+      )
+        : (
+          <Image
+          source={{ uri: mediaURL }}
+          onLoadEnd={props.onImageLoaded}
+          style={styles.content}
+          resizeMode="stretch"
+          // width={ScreenWidth}
+        />
         )}
     </View>
   );
